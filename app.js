@@ -21,20 +21,17 @@ new Vue({
 		async bubbleSort(){
 			for(let i = 0; i < this.arraySize; i++){
        			for (let j = 0; j < this.arraySize -i; j++) {
-           			await this.sleep();
+           			await new Promise(r => setTimeout(r, this.sortSpeed));
+           			this.reRender();
            			this.bubbleExchange(j);
             	}
             }
-        },
-        sleep: function(){
-        	return new Promise(resolve => setTimeout(resolve, this.sortSpeed))
         },
         bubbleExchange: function(j){
         	if (this.values[j] > this.values[j + 1]) {
                			let tmp = this.values[j];
                			this.values[j] = this.values[j + 1];
                			this.values[j + 1] = tmp
-                		this.reRender();
                }
         }
     },

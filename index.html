@@ -18,7 +18,7 @@
 		</div>
 		<div id="mainBody" :key="counter">
 			<div class="valueBlockPair" v-for="(value,index) in values">
-				<div class="block" :style="{'height':  values[index] +'%'}"></div>
+				<div class="block" :style="{'height':  values[index] +'%'}" :key="value"></div>
 				<!--<div class="value">{{ value }}</div> -->
 			</div>
 		</div>
