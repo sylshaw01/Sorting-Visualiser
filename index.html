@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Sorting Visualiser</title>
-	<script src="https://npmcdn.com/vue/dist/vue.js"></script>
-	<script defer type="text/javascript" src="app.js"></script>
-	<link href="styles.css" rel="stylesheet" type="text/css">
+    <title>Sorting Visualiser</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <script defer type="text/javascript" src="app.js"></script>
+    <link href="styles.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
-	<div id="app">
-		<div id="headerBar">
-			<div id="pageTitle">Sorting Visualiser</div>
-			<div id="controls">
-				<div id="Dropdown"></div>
-				<button id="scramble" @click="scramble">Scramble</button>
-				<button id="startSorting" @click="bubbleSort">Start Sorting</button>
-			</div>
-		</div>
-		<div id="mainBody" :key="counter">
-			<div class="valueBlockPair" v-for="(value,index) in values">
-				<div class="block" :style="{'height':  values[index] +'%'}" :key="value"></div>
-				<!--<div class="value">{{ value }}</div> -->
-			</div>
-		</div>
-	</div>
+    <div id="app">
+        <div id="headerBar">
+            <div id="pageTitle">Sorting Visualiser</div>
+            <div id="controls">
+                <div id="Dropdown"></div>
+                <button id="scramble" @click="scramble">Scramble</button>
+                <button id="startSorting" @click="bubbleSort">Start Sorting</button>
+            </div>
+        </div>
+        <div id="mainBody">
+            <div class="valueBlockPair" v-for="(value,index) in values" :key="value.id">
+                <div class="block" :style="{'height':  values[index].id +'%'}"></div>
+                <!--<div class="value">{{ value }}</div> -->
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
