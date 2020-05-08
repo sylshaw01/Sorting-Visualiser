@@ -14,13 +14,13 @@
             <div id="pageTitle">Sorting Visualiser</div>
             <div id="controls">
                 <div id="Dropdown"></div>
-                <button id="scramble" @click="scramble">Scramble</button>
-                <button id="startSorting" @click="bubbleSort">Start Sorting</button>
+                <button id="scramble" @click="scramble" v-if="!sorting">Scramble</button>
+                <button id="startSorting" @click="bubbleSort" v-if="!sorting">Start Sorting</button>
             </div>
         </div>
-        <div id="mainBody">
-            <div class="valueBlockPair" v-for="(value,index) in values" :key="value.id">
-                <div class="block" :style="{'height':  values[index].id +'%'}"></div>
+        <div id="mainBody" :key="">
+            <div class="valueBlockPair" v-for="(value,index) in values" :key="value.id" :style="{'width': blockWidth}">
+                <div class="block" :class="{green:values[index].sorted}" :style="{'height':  values[index].id +'%'}"></div>
                 <!--<div class="value">{{ value }}</div> -->
             </div>
         </div>
