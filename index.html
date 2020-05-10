@@ -14,6 +14,12 @@
             <div id="pageTitle">Sorting Visualiser</div>
             <div id="controls">
                 <div id="Dropdown"></div>
+                <div class="sliderContainer">
+                    <input type="range" min="1" max="200" value="50" v-model="sortSpeed"> Adjust sorting speed
+                </div>
+                <div class="sliderContainer" v-if="!sorting">
+                    <input type="range" min="1" max="100" value="50" v-model="arraySize"> Adjust array size
+                </div>
                 <button id="scramble" @click="scramble" v-if="!sorting">Scramble</button>
                 <button id="startSorting" @click="bubbleSort" v-if="!sorting">Start Sorting</button>
             </div>
