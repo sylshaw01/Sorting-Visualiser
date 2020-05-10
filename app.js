@@ -3,7 +3,7 @@ new Vue({
     data: {
         sortingMode: 'BubbleSort',
         arraySize: 50,
-        sortSpeed: 0,
+        sortSpeed: 150,
         values: [],
         sorting: false
     },
