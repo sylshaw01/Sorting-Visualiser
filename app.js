@@ -27,12 +27,11 @@ new Vue({
         async bubbleSort() {
             //Setting state variables so sorting cannot be invoked twice at once
             this.sorting = true;
-            let counter = 0;
             for (let i = 0; i < this.arraySize; i++) {
                 for (let j = 0; j < this.arraySize - i - 1; j++) {
                     //Changes the current active bar to purple
                     this.values[j].active = true;
-                    await this.bubbleExchange(j, i, ++counter);
+                    await this.bubbleExchange(j);
                     //change the active bars to false
                     this.values[j].active = false;
                     this.values[j + 1].active = false;
@@ -45,7 +44,7 @@ new Vue({
             this.sorting = false;
         },
         //Split into separate function here to deal with the async problems that arise with having setTimeout in a loop
-        bubbleExchange: function(j, i, counter) {
+        bubbleExchange: function(j) {
             if (this.values[j].id > this.values[j + 1].id) {
                 //If a bar is being switched, colour it purple
                 this.values[j + 1].active = true;
