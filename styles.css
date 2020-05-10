@@ -23,6 +23,7 @@ button {
     float: right;
     display: flex;
     flex-direction: row;
+    align-items: center;
     height: 100%;
 }
 
@@ -50,6 +51,35 @@ button {
     align-items: flex-end;
 }
 
+.sliderContainer {
+    text-align: center;
+    margin: 20px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    height: 15px;
+    border-radius: 7px;
+    margin: 5px;
+    opacity: 0.8;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
 .valueBlockPair {
     height: 750px;
     width: 5px;
@@ -75,4 +105,8 @@ button {
 
 .green {
     background-color: green;
+}
+
+.purple {
+    background-color: purple;
 }

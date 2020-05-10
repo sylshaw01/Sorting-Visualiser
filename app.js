@@ -17,7 +17,8 @@ new Vue({
                   Of having the whole app rerender on every bubblesort iteration, also allows me to add colour information */
                 let obj = {
                     'id': Math.random() * 100,
-                    'sorted': false
+                    'sorted': false,
+                    'active': false,
                 };
                 this.values.push(obj);
             }
@@ -29,7 +30,12 @@ new Vue({
             let counter = 0;
             for (let i = 0; i < this.arraySize; i++) {
                 for (let j = 0; j < this.arraySize - i - 1; j++) {
+                    //Changes the current active bar to purple
+                    this.values[j].active = true;
                     await this.bubbleExchange(j, i, ++counter);
+                    //change the active bars to false
+                    this.values[j].active = false;
+                    this.values[j + 1].active = false;
 
                 }
                 //Changes bar colour to green
@@ -41,12 +47,15 @@ new Vue({
         //Split into separate function here to deal with the async problems that arise with having setTimeout in a loop
         bubbleExchange: function(j, i, counter) {
             if (this.values[j].id > this.values[j + 1].id) {
+                //If a bar is being switched, colour it purple
+                this.values[j + 1].active = true;
+                //Switch the two values
                 let tmp = this.values[j].id;
                 this.values[j].id = this.values[j + 1].id;
                 this.values[j + 1].id = tmp
             }
-
-            return new Promise(resolve => setTimeout(resolve, this.sortSpeed));
+            // wait for sortSpeed amt of time
+            return new Promise(resolve => setTimeout(resolve, 300 - this.sortSpeed));
 
         }
     },
