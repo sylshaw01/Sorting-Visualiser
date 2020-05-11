@@ -15,11 +15,11 @@
             <div id="controls">
                 <div id="Dropdown"></div>
                 <div class="sliderContainer">
-                    <div class="sliderText">Adjust sorting speed</div>
+                    <div class="sliderText">Adjust Sorting Speed</div>
                     <input class="slider" type="range" min="0" max="300" value="50" v-model="sortSpeed">
                 </div>
                 <div class="sliderContainer" v-if="!sorting">
-                    <div class="sliderText"> Adjust array size</div>
+                    <div class="sliderText"> Adjust Array Size</div>
                     <input class="slider" type="range" min="1" max="100" value="50" v-model="arraySize">
                 </div>
                 <button id="scramble" @click="scramble" v-if="!sorting">Scramble</button>
