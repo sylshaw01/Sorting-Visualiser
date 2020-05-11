@@ -72,6 +72,8 @@ button:hover {
     -webkit-appearance: none;
     appearance: none;
     height: 15px;
+    width: 160px;
+    background-color: #f2f2f2;
     border-radius: 7px;
     margin: 5px;
     opacity: 0.8;
@@ -82,6 +84,7 @@ input::-webkit-slider-thumb {
     height: 15px;
     width: 15px;
     border-radius: 7px;
+    border: none;
     appearance: none;
     background: #4CAF50;
     cursor: pointer;
@@ -90,6 +93,7 @@ input::-webkit-slider-thumb {
 input::-moz-range-thumb {
     background: #4CAF50;
     width: 15px;
+    border: none;
     height: 15px;
     cursor: pointer;
 }
