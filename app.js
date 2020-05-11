@@ -5,13 +5,15 @@ new Vue({
         arraySize: 50,
         sortSpeed: 150,
         values: [],
-        sorting: false
+        sorting: false,
+        sorted: false
     },
     methods: {
         //Method to randomise all array values
         scramble: function() {
             this.values = [];
             this.sorting = false;
+            this.sorted = false;
             for (let i = 0; i < this.arraySize; i++) {
                 /*Looks strange but I use an object here so rerendering occurs for individual blocks instead
                   Of having the whole app rerender on every bubblesort iteration, also allows me to add colour information */
@@ -42,6 +44,7 @@ new Vue({
             }
             //Resetting state variable so you can sort again
             this.sorting = false;
+            this.sorted = true;
         },
         //Split into separate function here to deal with the async problems that arise with having setTimeout in a loop
         bubbleExchange: function(j) {
