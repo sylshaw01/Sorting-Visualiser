@@ -110,7 +110,7 @@ input::-moz-range-thumb {
 
 .block {
     height: 100%;
-    width: 100%;
+    width: 90%;
     background-color: #c70d00;
 }
 
