@@ -36,6 +36,14 @@ new Vue({
                 case "insertionSort":
                     await this.insertionSort();
                     break;
+                case "mergeSort":
+                    let arr = [];
+                    for (let i = 0; i < this.arraySize; i++) {
+                        arr[i] = this.values[i].id;
+                    }
+                    console.log(arr);
+                    let sortedArray = await this.mergeSort(arr, 0);
+                    break;
             }
             //Resetting state variable so you can sort again
             this.sorting = false;
@@ -72,6 +80,9 @@ new Vue({
             return new Promise(resolve => setTimeout(resolve, 300 - this.sortSpeed));
 
         },
+
+
+        //INSERTION SORT
         async insertionSort() {
             for (let i = 1; i < this.arraySize; i++) {
                 this.values[i].sorted = true;
@@ -86,7 +97,49 @@ new Vue({
             for (let i = 0; i < this.arraySize; i++) {
                 this.values[i].sorted = true;
             }
+        },
+
+
+
+        //MERGE SORT
+        async merge(arr1, arr2, index) {
+            console.log(arr1, arr2);
+            let sortedArr = [];
+            while (arr1.length && arr2.length) {
+                if (arr1[0] <= arr2[0]) {
+                    sortedArr.push(arr1.shift());
+                } else {
+                    sortedArr.push(arr2.shift());
+                }
+            }
+            while (arr1.length) {
+                sortedArr.push(arr1.shift());
+            }
+            while (arr2.length) {
+                sortedArr.push(arr2.shift());
+            }
+            for (let i = 0; i < sortedArr.length; i++) {
+                await this.changeValue(i + index, sortedArr[i]);
+            }
+            return sortedArr;
+        },
+        changeValue(i, value) {
+            this.values[i].id = value;
+            return new Promise(resolve => setTimeout(resolve, 300 - this.sortSpeed));
+        },
+        async mergeSort(arr, index) {
+            console.log(arr);
+            if (arr.length < 2) {
+                return arr;
+            } else {
+                var midpoint = parseInt(arr.length / 2);
+                var leftArr = arr.slice(0, midpoint);
+                var rightArr = arr.slice(midpoint, arr.length);
+                return this.merge(await this.mergeSort(leftArr, index), await this.mergeSort(rightArr, index + midpoint), index);
+            }
         }
+        //MERGE SORT END
+
     },
     computed: {
         blockWidth: function() {
