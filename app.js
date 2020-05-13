@@ -73,7 +73,6 @@ new Vue({
 
         },
         async insertionSort() {
-            this.sorting = true;
             for (let i = 1; i < this.arraySize; i++) {
                 this.values[i].sorted = true;
                 let j = i;
@@ -83,6 +82,9 @@ new Vue({
                     j--;
                 }
                 this.values[i].sorted = false;
+            }
+            for (let i = 0; i < this.arraySize; i++) {
+                this.values[i].sorted = true;
             }
         }
     },
