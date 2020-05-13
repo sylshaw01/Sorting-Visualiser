@@ -41,8 +41,10 @@ new Vue({
                     for (let i = 0; i < this.arraySize; i++) {
                         arr[i] = this.values[i].id;
                     }
-                    console.log(arr);
                     let sortedArray = await this.mergeSort(arr, 0);
+                    for (let i = 0; i < this.arraySize; i++) {
+                        this.values[i].sorted = true;
+                    }
                     break;
             }
             //Resetting state variable so you can sort again
@@ -119,11 +121,13 @@ new Vue({
             }
             for (let i = 0; i < sortedArr.length; i++) {
                 await this.changeValue(i + index, sortedArr[i]);
+                this.values[i].active = false;
             }
             return sortedArr;
         },
         changeValue(i, value) {
             this.values[i].id = value;
+            this.values[i].active = true;
             return new Promise(resolve => setTimeout(resolve, 300 - this.sortSpeed));
         },
         async mergeSort(arr, index) {
