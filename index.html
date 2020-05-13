@@ -23,7 +23,7 @@
                     <input class="slider" type="range" min="1" max="100" value="50" v-model="arraySize">
                 </div>
                 <button id="scramble" @click="scramble" v-if="!sorting">Scramble</button>
-                <button id="startSorting" @click="bubbleSort" v-if="!sorting && !sorted">Start Sorting</button>
+                <button id="startSorting" @click="insertionSort" v-if="!sorting && !sorted">Start Sorting</button>
             </div>
         </div>
         <div id="mainBody" :key="">
