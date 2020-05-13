@@ -33,7 +33,7 @@ new Vue({
                 for (let j = 0; j < this.arraySize - i - 1; j++) {
                     //Changes the current active bar to purple
                     this.values[j].active = true;
-                    await this.swapValues(j);
+                    await this.swapValues(j, j + 1);
                     //change the active bars to false
                     this.values[j].active = false;
                     this.values[j + 1].active = false;
@@ -47,10 +47,10 @@ new Vue({
             this.sorted = true;
         },
         //Split into separate function here to deal with the async problems that arise with having setTimeout in a loop
-        swapValues: function(j) {
+        swapValues: function(j, active) {
             if (this.values[j].id > this.values[j + 1].id) {
                 //If a bar is being switched, colour it purple
-                this.values[j + 1].active = true;
+                this.values[active].active = true;
                 //Switch the two values
                 let tmp = this.values[j].id;
                 this.values[j].id = this.values[j + 1].id;
@@ -63,11 +63,14 @@ new Vue({
         async insertionSort() {
             this.sorting = true;
             for (let i = 1; i < this.arraySize; i++) {
+                this.values[i].sorted = true;
                 let j = i;
                 while (j > 0 && this.values[j - 1].id > this.values[j].id) {
-                    await this.swapValues(j - 1);
+                    await this.swapValues(j - 1, j - 1);
+                    this.values[j - 1].active = false;
                     j--;
                 }
+                this.values[i].sorted = false;
             }
             this.sorting = false;
             this.sorted = true;
