@@ -103,7 +103,6 @@ new Vue({
 
         //MERGE SORT
         async merge(arr1, arr2, index) {
-            console.log(arr1, arr2);
             let sortedArr = [];
             while (arr1.length && arr2.length) {
                 if (arr1[0] <= arr2[0]) {
@@ -128,7 +127,6 @@ new Vue({
             return new Promise(resolve => setTimeout(resolve, 300 - this.sortSpeed));
         },
         async mergeSort(arr, index) {
-            console.log(arr);
             if (arr.length < 2) {
                 return arr;
             } else {
