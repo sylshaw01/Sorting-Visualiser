@@ -1,7 +1,7 @@
 new Vue({
     el: "#app",
     data: {
-        sortingMode: 'BubbleSort',
+        sortingMode: 'bubbleSort',
         arraySize: 50,
         sortSpeed: 150,
         values: [],
@@ -25,10 +25,25 @@ new Vue({
                 this.values.push(obj);
             }
         },
-        //Simple bubble sort algorithm
-        async bubbleSort() {
+        //Function to select a certain sorting algorithm based on which is selected
+        async sort() {
             //Setting state variables so sorting cannot be invoked twice at once
             this.sorting = true;
+            switch (this.sortingMode) {
+                case "bubbleSort":
+                    await this.bubbleSort();
+                    break;
+                case "insertionSort":
+                    await this.insertionSort();
+                    break;
+            }
+            //Resetting state variable so you can sort again
+            this.sorting = false;
+            this.sorted = true;
+        },
+        //Simple bubble sort algorithm
+        async bubbleSort() {
+
             for (let i = 0; i < this.arraySize; i++) {
                 for (let j = 0; j < this.arraySize - i - 1; j++) {
                     //Changes the current active bar to purple
@@ -42,9 +57,6 @@ new Vue({
                 //Changes bar colour to green
                 this.values[this.arraySize - i - 1].sorted = true;
             }
-            //Resetting state variable so you can sort again
-            this.sorting = false;
-            this.sorted = true;
         },
         //Split into separate function here to deal with the async problems that arise with having setTimeout in a loop
         swapValues: function(j, active) {
@@ -72,8 +84,6 @@ new Vue({
                 }
                 this.values[i].sorted = false;
             }
-            this.sorting = false;
-            this.sorted = true;
         }
     },
     computed: {

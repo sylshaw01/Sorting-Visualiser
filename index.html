@@ -13,7 +13,10 @@
         <div id="headerBar">
             <div id="pageTitle">Sorting Visualiser</div>
             <div id="controls">
-                <div id="Dropdown"></div>
+                <div id="Dropdown"><select v-model="sortingMode" v-if="!sorting">
+                    <option value="bubbleSort" >Bubble Sort</option>
+                    <option value="insertionSort" >Insertion Sort</option>
+                </select></div>
                 <div class="sliderContainer">
                     <div class="sliderText">Adjust Sorting Speed</div>
                     <input class="slider" type="range" min="0" max="300" value="50" v-model="sortSpeed">
@@ -23,7 +26,7 @@
                     <input class="slider" type="range" min="1" max="100" value="50" v-model="arraySize">
                 </div>
                 <button id="scramble" @click="scramble" v-if="!sorting">Scramble</button>
-                <button id="startSorting" @click="insertionSort" v-if="!sorting && !sorted">Start Sorting</button>
+                <button id="startSorting" @click="sort" v-if="!sorting && !sorted">Start Sorting</button>
             </div>
         </div>
         <div id="mainBody" :key="">
