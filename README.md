@@ -1,5 +1,5 @@
 # Sorting Visualiser
-This is a simple sorting algorithm visualiser build with the Vue.js framework to showcase my abilities with Vue.js and Javascript as a whole, as well as general HTML and CSS profiency, this is currently hosted at http://nathanshaw.info/sortingVisualiser/index.html .
+This is a simple sorting algorithm visualiser build with the Vue.js framework to showcase my abilities with Vue.js and Javascript as a whole, as well as general HTML and CSS profiency.
 ## Current functionality
 As it currently stands there are three sorting algorithms implemented:
 - Bubble Sort
